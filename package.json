@@ -1,6 +1,6 @@
 {
   "name": "is-file-open",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Checks if a file is used by another process on macOS",
   "repository": "git@github.com:adambrgmn/is-file-open.git",
   "author": "Adam Bergman <adam@fransvilhelm.com>",
