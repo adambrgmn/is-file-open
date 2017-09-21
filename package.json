@@ -4,7 +4,7 @@
   "description": "Checks if a file is used by another process on macOS",
   "repository": "git@github.com:adambrgmn/is-file-open.git",
   "author": "Adam Bergman <adam@fransvilhelm.com>",
-  "main": "index.js",
+  "main": "lib/index.js",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/adambrgmn/is-file-open/issues"
