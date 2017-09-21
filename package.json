@@ -1,10 +1,13 @@
 {
   "name": "is-file-open",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Checks if a file is used by another process on macOS",
   "main": "index.js",
   "license": "MIT",
   "private": false,
+  "files": [
+    "lib"
+  ],
   "scripts": {
     "prebuild": "rimraf lib/*",
     "build": "babel src --out-dir lib",
