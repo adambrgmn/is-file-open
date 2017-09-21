@@ -1,11 +1,11 @@
 import { spawn } from 'child_process';
 
 const createDataCollector = () => {
-  let data = '';
+  const data = [];
 
   return {
     add(d) {
-      data += d.toString();
+      data.push(d.toString().trim());
     },
     get() {
       return data;
@@ -26,24 +26,36 @@ const lsof = filePath =>
       const stdoutData = stdout.get();
       const stderrData = stderr.get();
 
-      if (stderrData) {
-        const err = new Error(stderrData.split('\n')[0]);
+      if (stderrData.length > 0) {
+        const err = new Error(stderrData[0]);
+        err.fullMessage = stderrData.join('\n');
         return reject(err);
       }
 
-      return resolve(stdoutData);
+      return resolve(stdoutData.join('\n'));
     });
   });
 
 const splitLine = line => line.split(/\s+/g);
+const numToNum = input => {
+  if (input.includes(',')) return input;
+  const num = parseFloat(input, 10);
+  return Number.isNaN(num) ? input : num;
+};
 const linesToObject = fields => line =>
-  line.reduce((acc, e, i) => Object.assign({}, acc, { [fields[i]]: e }), {});
+  line.reduce(
+    (acc, e, i) => Object.assign({}, acc, { [fields[i].toLowerCase()]: e }),
+    {}
+  );
 
 const processLsofOutput = lsofOutput => {
   const [fieldsLine, ...fileLines] = lsofOutput.trim().split('\n');
 
   const fields = splitLine(fieldsLine);
-  const files = fileLines.map(splitLine).map(linesToObject(fields));
+  const files = fileLines
+    .map(splitLine)
+    .map(l => l.map(numToNum))
+    .map(linesToObject(fields));
 
   return files;
 };
