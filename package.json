@@ -1,0 +1,8 @@
+{
+  "name": "is-file-open",
+  "version": "0.0.0",
+  "description": "Checks if a file is used by another process on macOS",
+  "main": "index.js",
+  "license": "MIT",
+  "private": false
+}
