@@ -5,6 +5,9 @@
   "main": "index.js",
   "license": "MIT",
   "private": false,
+  "files": [
+    "lib"
+  ],
   "scripts": {
     "prebuild": "rimraf lib/*",
     "build": "babel src --out-dir lib",
