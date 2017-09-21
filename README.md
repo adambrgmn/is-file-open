@@ -75,7 +75,7 @@ The processes property is a straight translation from from the output of `lsof`.
 
 | Arg | Type | Required |
 |:----|:-----|:---------|
-| filePath | `string` | :heavy_check_mark: |
+| filePath | `string` | :heavy_multiplication_x: |
 
 `isFileOpen(filePath)` is an async function that eventually will resolve an object with data concerning the file.
 
